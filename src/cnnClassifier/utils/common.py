@@ -11,7 +11,7 @@ from typing import Any
 import base64
 
 @ensure_annotations
-def read_yaml(path_to_yaml: Path) -> Box:
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """
     Read a YAML file and return its content as a Box object.
 
