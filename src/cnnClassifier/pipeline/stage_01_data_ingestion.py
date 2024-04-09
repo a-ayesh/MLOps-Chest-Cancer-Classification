@@ -17,6 +17,7 @@ class DataIngestionTrainingPipeline:
 
 if __name__ == "__main__":
     try: 
+        logger.info("\n\nBEGIN NEXT STAGE\n\n")
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataIngestionTrainingPipeline()
         obj.main()

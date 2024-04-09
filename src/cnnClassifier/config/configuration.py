@@ -1,7 +1,7 @@
 import os
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_directories
-from cnnClassifier.entity.config_entity import (DataIngestionConfig,
+from cnnClassifier.entity.config_entity import (DataIngestionConfig, EvaluationConfig,
                                                 PrepareBaseModelConfig, 
                                                 TrainingConfig)
 
@@ -67,3 +67,18 @@ class ConfigurationManager:
         )
         
         return training_config
+
+    def get_evaluation_config(self)->EvaluationConfig:
+        training = self.config.training
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Adenocarcinoma-Chest-CT-Scan-data")
+
+        eval_config = EvaluationConfig(
+            path_of_model=Path(training.trained_model_path),
+            training_data=Path(training_data),
+            all_params=self.params,
+            mlflow_uri="https://dagshub.com/a-ayesh/MLOps-Chest-Cancer-Classification.mlflow",
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+
+        return eval_config
