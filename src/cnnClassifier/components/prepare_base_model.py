@@ -27,6 +27,13 @@ class PrepareBaseModel:
             for layer in model.layers[:-freeze_till]:
                 model.trainable = False
         
+        regularizer = tf.keras.regularizers.l2(0.01)
+
+        for layer in model.layers:
+            for attr in ['kernel_regularizer']:
+                if hasattr(layer, attr):
+                    setattr(layer, attr, regularizer)
+        
         flatten_in = tf.keras.layers.Flatten()(model.output)
         prediction = tf.keras.layers.Dense(
             units=classes, 
