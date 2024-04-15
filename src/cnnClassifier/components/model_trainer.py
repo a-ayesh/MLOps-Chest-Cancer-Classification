@@ -55,8 +55,9 @@ class Training:
         )
 
     @staticmethod
-    def save_model(path: Path, model: tf.keras.Model):
-        model.save(path)
+    def save_model(dev_path: Path, prod_path: Path, model: tf.keras.Model):
+        model.save(dev_path)
+        model.save(prod_path)
         
     def train(self):
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
@@ -71,6 +72,7 @@ class Training:
         )
 
         self.save_model(
-            path = self.config.trained_model_path,
+            dev_path = self.config.trained_model_path,
+            prod_path = self.config.production_model_path,
             model = self.model
         )

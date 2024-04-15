@@ -35,6 +35,7 @@ stages:
       - AUGMENTATION
     outs:
       - artifacts/training/model.h5
+      - model/model.h5
   
   evaluation:
     cmd: python src/cnnClassifier/pipeline/stage_04_model_evaluation.py

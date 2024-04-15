@@ -53,11 +53,12 @@ class ConfigurationManager:
         prepare_base_model = self.config.prepare_base_model
         params = self.params
         training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Adenocarcinoma-Chest-CT-Scan-data")
-        create_directories([Path(training.root_dir)])
+        create_directories([Path(training.root_dir), Path(training.production_dir)])
 
         training_config = TrainingConfig(
             root_dir = Path(training.root_dir),
             trained_model_path = Path(training.trained_model_path),
+            production_model_path = Path(training.production_model_path),
             updated_base_model_path = Path(prepare_base_model.updated_base_model_path),
             training_data = Path(training_data),
             params_epochs = params.EPOCHS,
