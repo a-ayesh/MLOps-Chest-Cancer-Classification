@@ -17,3 +17,6 @@ MLFLOW_TRACKING_URI=https://dagshub.com/a-ayesh/MLOps-Chest-Cancer-Classificatio
 MLFLOW_TRACKING_USERNAME=a-ayesh \
 MLFLOW_TRACKING_PASSWORD=3c9db54c5412e695ee06168b89ca8ae39847b403 \
 python script.py
+
+region: us-east-1
+URI: 058264514472.dkr.ecr.us-east-1.amazonaws.com/chest
