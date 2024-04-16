@@ -23,8 +23,8 @@ def home():
 @app.route("/train", methods=['GET', 'POST'])
 @cross_origin()
 def trainRoute():
-    # os.system("python main.py")
-    os.system("dvc.repro")
+    os.system("python main.py")
+    # os.system("dvc.repro")
     return "Training Completed!"
 
 @app.route("/predict", methods=['POST'])
